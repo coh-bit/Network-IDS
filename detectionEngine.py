@@ -22,11 +22,21 @@ class DetectionEngine:
         'event_count'
     ]
 
+    LSTM_FEATURE_ORDER = [
+        'packet_count',
+        'byte_count',
+        'flow_duration',
+        'flag_syn',
+        'flag_ack',
+        'dest_port',
+    ]
+
     def __init__(self, model_dir="."):
         self.model_dir = Path(model_dir)
         self.signature_rules = self.load_signature_rules()
         self.random_forest_model = self._load_model(["rf_flow_classifier.joblib", "random_forest_ids.pkl"])
         self.lstm_model = self._load_keras_model(["lstm_ids.keras", "lstm_ids.h5"])
+        self.lstm_scaler = self._load_scaler(["lstm_ids_scaler.joblib", "lstm_scaler.joblib"])
 
     def load_signature_rules(self):
         return {
@@ -61,6 +71,13 @@ class DetectionEngine:
             model_path = self.model_dir / filename
             if model_path.exists():
                 return keras.models.load_model(model_path)
+        return None
+
+    def _load_scaler(self, filenames):
+        for filename in filenames:
+            scaler_path = self.model_dir / filename
+            if scaler_path.exists():
+                return joblib.load(scaler_path)
         return None
 
     def _build_random_forest_vector(self, flow_features):
@@ -100,7 +117,17 @@ class DetectionEngine:
         if self.lstm_model is None or not sequence:
             return None
 
-        sequence_array = np.array([sequence], dtype=float)
+        sequence_array = np.asarray(sequence, dtype=float)
+        if sequence_array.ndim == 1:
+            sequence_array = sequence_array.reshape(1, -1)
+
+        if self.lstm_scaler is not None:
+            flat_sequence = sequence_array.reshape(-1, sequence_array.shape[-1])
+            scaled_sequence = self.lstm_scaler.transform(flat_sequence)
+            sequence_array = scaled_sequence.reshape(1, sequence_array.shape[0], sequence_array.shape[1])
+        else:
+            sequence_array = sequence_array.reshape(1, sequence_array.shape[0], sequence_array.shape[1])
+
         predicted_probability = float(self.lstm_model.predict(sequence_array, verbose=0)[0][0])
 
         return {

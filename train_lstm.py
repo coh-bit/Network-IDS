@@ -17,6 +17,7 @@ Notes:
 
 from pathlib import Path
 
+import joblib
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -28,6 +29,7 @@ from tensorflow.keras import layers
 
 RAW_CSV = "mock_nids_traffic.csv"
 MODEL_OUT = "lstm_ids.keras"
+SCALER_OUT = "lstm_ids_scaler.joblib"
 
 SEQUENCE_LENGTH = 10
 FEATURE_COLUMNS = [
@@ -130,6 +132,12 @@ def train_and_save(sequence_array, label_array):
 
     model.save(MODEL_OUT)
     print(f"Saved LSTM model to {MODEL_OUT}")
+
+    scaler = MinMaxScaler()
+    X_train_reshaped = X_train.reshape(-1, X_train.shape[-1])
+    scaler.fit(X_train_reshaped)
+    joblib.dump(scaler, SCALER_OUT)
+    print(f"Saved LSTM scaler to {SCALER_OUT}")
     return model
 
 

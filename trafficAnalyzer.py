@@ -95,7 +95,7 @@ class TrafficAnalyzer:
         sequence = list(self.flow_sequences[flow_key])
         padding_length = self.sequence_length - len(sequence)
         if padding_length > 0:
-            sequence = [[0.0, 0.0, 0.0, 0.0] for _ in range(padding_length)] + sequence
+            sequence = [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0] for _ in range(padding_length)] + sequence
         return sequence[-self.sequence_length:]
 
     def extract_features(self, packet, stats):

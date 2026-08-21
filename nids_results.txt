@@ -1,0 +1,47 @@
+NIDS RESULTS REPORT
+================================================================================
+Total flows: 36
+Flagged intrusion: 21
+Flagged clear: 15
+
+INTRUSIONS DETECTED
+--------------------------------------------------------------------------------
+104.36.121.72 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+50.126.115.17 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+170.112.3.19 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+134.71.216.47 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+202.159.204.172 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+62.194.1.253 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+82.242.208.49 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+35.206.173.205 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+62.208.248.124 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+62.135.216.247 -> 37.64.65.169, dest_port=80, threat_score=1.000, attack_type=DDoS_SYN_Flood
+128.210.239.222 -> 37.64.65.169, dest_port=80, threat_score=0.995, attack_type=DDoS_SYN_Flood
+133.50.25.167 -> 37.64.65.169, dest_port=80, threat_score=0.980, attack_type=DDoS_SYN_Flood
+114.145.80.113 -> 192.168.1.215, dest_port=20, threat_score=0.975, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=50, threat_score=0.965, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=56, threat_score=0.960, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=111, threat_score=0.955, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=80, threat_score=0.955, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=32, threat_score=0.940, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=40, threat_score=0.870, attack_type=Port_Scan
+114.145.80.113 -> 192.168.1.215, dest_port=90, threat_score=0.870, attack_type=Port_Scan
+220.232.146.109 -> 192.168.1.180, dest_port=22, threat_score=0.670, attack_type=Brute_Force
+
+CLEAR / NORMAL TRAFFIC
+--------------------------------------------------------------------------------
+192.168.1.98 -> 40.150.185.148, dest_port=443, threat_score=0.105
+192.168.1.145 -> 157.134.219.230, dest_port=80, threat_score=0.065
+192.168.1.99 -> 44.183.176.155, dest_port=443, threat_score=0.040
+192.168.1.8 -> 209.140.125.58, dest_port=443, threat_score=0.030
+192.168.1.78 -> 183.101.78.96, dest_port=443, threat_score=0.025
+192.168.1.30 -> 112.157.122.15, dest_port=443, threat_score=0.015
+192.168.1.113 -> 60.232.1.245, dest_port=443, threat_score=0.010
+192.168.1.70 -> 199.36.87.137, dest_port=443, threat_score=0.010
+192.168.1.10 -> 27.47.111.60, dest_port=80, threat_score=0.005
+192.168.1.152 -> 91.3.81.179, dest_port=80, threat_score=0.000
+192.168.1.121 -> 155.128.5.175, dest_port=80, threat_score=0.000
+192.168.1.243 -> 165.161.108.168, dest_port=80, threat_score=0.000
+192.168.1.217 -> 216.28.117.211, dest_port=80, threat_score=0.000
+192.168.1.254 -> 40.119.51.98, dest_port=443, threat_score=0.000
+192.168.1.25 -> 213.24.56.40, dest_port=443, threat_score=0.000
