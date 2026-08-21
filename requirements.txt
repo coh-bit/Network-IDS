@@ -1,0 +1,5 @@
+scapy       # forge or decode packets 
+python-nmap # for nmap port scanner
+numpy       # math functions
+scikit-learn     # machine learning librarys
+tensorflow  # LSTM / deep learning models
